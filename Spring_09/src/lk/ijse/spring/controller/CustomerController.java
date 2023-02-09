@@ -11,8 +11,12 @@ public class CustomerController {
     public CustomerController(){
         System.out.println("Customer Controller");
     }
+//    @GetMapping
+//    public void callMe(){
+//        System.out.println("Call Me Method Invoked");
+//    }
     @GetMapping
-    public void callMe(){
-        System.out.println("Call Me Method Invoked");
+    public String testOne(){
+        return "Hello I am Sithum";
     }
 }
