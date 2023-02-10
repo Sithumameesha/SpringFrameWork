@@ -12,4 +12,5 @@ public class WedAppConfig {
     public WedAppConfig(){
         System.out.println("WedRoot:Instantiated");
     }
+
 }
