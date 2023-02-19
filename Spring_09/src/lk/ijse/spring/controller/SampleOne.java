@@ -4,7 +4,7 @@ import lk.ijse.spring.Dto.CustomerDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 @CrossOrigin
 public class SampleOne {
     @PutMapping

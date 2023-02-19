@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="maven_test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Maven" target="8" />
+      <module name="maven" target="8" />
+      <module name="maven_Repo" target="1.8" />
+      <module name="Maven_Test" target="8" />
+      <module name="newMaven" target="1.8" />
+      <module name="Test_Maven" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
