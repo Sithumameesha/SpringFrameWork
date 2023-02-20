@@ -7,7 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="maven_test" />
+        <module name="Maven_Wed_Mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -15,6 +15,7 @@
       <module name="maven" target="8" />
       <module name="maven_Repo" target="1.8" />
       <module name="Maven_Test" target="8" />
+      <module name="maven_test" target="1.8" />
       <module name="newMaven" target="1.8" />
       <module name="Test_Maven" target="8" />
     </bytecodeTargetLevel>

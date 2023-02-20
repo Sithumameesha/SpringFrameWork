@@ -88,7 +88,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
 
-    let baseURL="http://localhost:8080/Spring_09/";
+    let baseURL="http://localhost:8080/Wed_App/";
 
     loadAllCustomers();
 
@@ -100,7 +100,7 @@
 
         //send ajax request to the customer servlet
         $.ajax({
-            url: baseURL+"customer",
+            url: baseURL+"customers",
             method: "post",
             data: formData,
             dataType:"json",

@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/maven_test" />
+    <file type="web" url="file://$PROJECT_DIR$/Maven_Wed_Mvc" />
     <file type="web" url="file://$PROJECT_DIR$/newMaven" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/maven_test/pom.xml" />
+        <option value="$PROJECT_DIR$/Maven_Wed_Mvc/pom.xml" />
       </list>
     </option>
   </component>
