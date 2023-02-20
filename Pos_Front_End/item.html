@@ -85,7 +85,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
 
-    let baseUrl="http://localhost:8080/posbackend/";
+    let baseUrl="http://localhost:8080/Wed_App/";
     //load all items from the database
     getAllItems();
 
@@ -95,7 +95,7 @@
     $("#btnItem").click(function () {
         let formData = $("#itemForm").serialize();
         $.ajax({
-            url: baseUrl+"item",
+            url: baseUrl+"items",
             method: "post",
             data: formData,
             dataType: "json",
@@ -118,7 +118,7 @@
     $("#btnItemDelete").click(function () {
         let code = $("#itemCode").val();
         $.ajax({
-            url: baseUrl+"item?code=" + code,
+            url: baseUrl+"items?code=" + code,
             method: "delete",
             success: function (resp) {
                 getAllItems();
@@ -170,7 +170,7 @@
     function getAllItems() {
         $("#tblItem").empty();
         $.ajax({
-            url: baseUrl+"item",
+            url: baseUrl+"items",
             success: function (res) {
                 for (let c of res.data) {
                     let code = c.code;

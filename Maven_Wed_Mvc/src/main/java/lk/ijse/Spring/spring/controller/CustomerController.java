@@ -1,18 +1,39 @@
 package lk.ijse.Spring.spring.controller;
 
 import lk.ijse.Spring.spring.Dto.CustomerDto;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.ijse.Spring.spring.Utill.ResponseUtill;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/customers")
 public class CustomerController {
     @PostMapping
-    public void SaveCustomer(CustomerDto dto){
+    public ResponseUtill SaveCustomer(@ModelAttribute CustomerDto dto){
         System.out.println("Wade Hri");
         System.out.println(dto.toString());
+        return new ResponseUtill("Ok","Successfully Login",null);
+    }
+    @DeleteMapping(params = {"id"})
+    public ResponseUtill deleteCustomer( @RequestParam String id){
+        return new ResponseUtill("Ok","Successfully Deleted",null);
+
+    }
+    @PutMapping
+    public ResponseUtill updateCustomer(@RequestBody CustomerDto dto){
+        return new ResponseUtill("Ok","Successfully Updated"+dto.getId(),null);
+    }
+    @GetMapping
+    public ResponseUtill getAllCustomer(){
+        ArrayList<CustomerDto>arrayList=new ArrayList<>();
+        arrayList.add(new CustomerDto("C001","Sithum","Galle",1000));
+        arrayList.add(new CustomerDto("C002","Sithum","Galle",2000));
+        arrayList.add(new CustomerDto("C003","Sithum","Galle",3000));
+        arrayList.add(new CustomerDto("C004","Sithum","Galle",4000));
+
+
+        return new ResponseUtill("Ok","Successfully Loaded",arrayList);
     }
 }

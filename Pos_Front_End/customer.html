@@ -125,7 +125,7 @@
     $("#btnCusDelete").click(function () {
         let id = $("#txtCustomerID").val();
         $.ajax({
-            url: baseURL+"customer?id=" + id + "",
+            url: baseURL+"customers?id=" + id + "",
             method: "delete",
             dataType:"json",
             success: function (resp) {
@@ -154,7 +154,7 @@
         }
 
         $.ajax({
-            url: baseURL+'customer',
+            url: baseURL+'customers',
             method: 'put',
             contentType:"application/json",
             data:JSON.stringify(customer),
@@ -175,7 +175,7 @@
     function loadAllCustomers() {
         $("#tblCustomer").empty();
         $.ajax({
-            url: baseURL+"customer",
+            url: baseURL+"customers",
             dataType: "json",
             success: function (resp) {
                 console.log(resp);
