@@ -17,6 +17,7 @@
       <module name="Maven_Test" target="8" />
       <module name="maven_test" target="1.8" />
       <module name="newMaven" target="1.8" />
+      <module name="Spring_Data_Jpa" target="1.8" />
       <module name="Test_Maven" target="8" />
     </bytecodeTargetLevel>
   </component>
