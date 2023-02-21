@@ -233,7 +233,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
 
-    let baseUrl = "http://localhost:8080/posbackend/";
+    let baseUrl = "http://localhost:8080/Wed_App/";
 
     //load all items from the database
     loadAllItems();
@@ -244,7 +244,7 @@
     function loadAllItems() {
         $("#selectItemCode").empty();
         $.ajax({
-            url: baseUrl + "item",
+            url: baseUrl + "items",
             success: function (res) {
                 for (let c of res.data) {
                     let code = c.code;
@@ -261,7 +261,7 @@
     function loadAllCustomers() {
         $("#selectCusID").empty();
         $.ajax({
-            url: baseUrl + "customer",
+            url: baseUrl + "customers",
             dataType: "json",
             success: function (resp) {
                 console.log(resp);
@@ -280,7 +280,7 @@
     function searchCustomer(cusID) {
         let response = "";
         $.ajax({
-            url: baseUrl + "customer",
+            url: baseUrl + "customers",
             dataType: "json",
             async: false,
             success: function (resp) {
@@ -295,7 +295,7 @@
     function searchItem(code) {
         let response = "";
         $.ajax({
-            url: baseUrl + "item",
+            url: baseUrl + "items",
             dataType: "json",
             async: false,
             success: function (resp) {
