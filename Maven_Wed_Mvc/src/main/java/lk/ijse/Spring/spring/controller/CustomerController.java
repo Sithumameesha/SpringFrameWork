@@ -1,7 +1,10 @@
 package lk.ijse.Spring.spring.controller;
 
 import lk.ijse.Spring.spring.Dto.CustomerDto;
+import lk.ijse.Spring.spring.Entity.Customer;
+import lk.ijse.Spring.spring.Repo.CustomerRepo;
 import lk.ijse.Spring.spring.Utill.ResponseUtill;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,10 +13,14 @@ import java.util.ArrayList;
 @CrossOrigin
 @RequestMapping("/customers")
 public class CustomerController {
+    @Autowired
+     private CustomerRepo repo;
     @PostMapping
     public ResponseUtill SaveCustomer(@ModelAttribute CustomerDto dto){
         System.out.println("Wade Hri");
         System.out.println(dto.toString());
+        Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary() );
+        repo.save(customer);
         return new ResponseUtill("Ok","Successfully Login",null);
     }
     @DeleteMapping(params = {"id"})
