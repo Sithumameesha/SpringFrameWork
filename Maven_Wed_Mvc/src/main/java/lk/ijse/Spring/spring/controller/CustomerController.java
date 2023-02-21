@@ -4,10 +4,12 @@ import lk.ijse.Spring.spring.Dto.CustomerDto;
 import lk.ijse.Spring.spring.Entity.Customer;
 import lk.ijse.Spring.spring.Repo.CustomerRepo;
 import lk.ijse.Spring.spring.Utill.ResponseUtill;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -15,32 +17,43 @@ import java.util.ArrayList;
 public class CustomerController {
     @Autowired
      private CustomerRepo repo;
+    @Autowired
+    private ModelMapper mapper;
     @PostMapping
     public ResponseUtill SaveCustomer(@ModelAttribute CustomerDto dto){
-        System.out.println("Wade Hri");
-        System.out.println(dto.toString());
-        Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary() );
-        repo.save(customer);
+     if (repo.existsById(dto.getId())){
+         throw new RuntimeException("Customer Already Exist. Please enter another id..!");
+     }
+        Customer map = mapper.map(dto, Customer.class);
+//        Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary() );
+        repo.save(map);
         return new ResponseUtill("Ok","Successfully Login",null);
     }
     @DeleteMapping(params = {"id"})
     public ResponseUtill deleteCustomer( @RequestParam String id){
-        return new ResponseUtill("Ok","Successfully Deleted",null);
+        if (repo.existsById(id)){
+            repo.deleteById(id);
+            return new ResponseUtill("Ok","Successfully Deleted",null);
+        }
+        throw new RuntimeException("Try Again");
 
     }
     @PutMapping
     public ResponseUtill updateCustomer(@RequestBody CustomerDto dto){
-        return new ResponseUtill("Ok","Successfully Updated"+dto.getId(),null);
+        if (repo.existsById(dto.getId())){
+            Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary() );
+            repo.save(customer);
+            return new ResponseUtill("Ok","Successfully Updated",null);
+        }
+        throw new RuntimeException("Customer Cannnot Find. Please try again..!");
     }
     @GetMapping
     public ResponseUtill getAllCustomer(){
-        ArrayList<CustomerDto>arrayList=new ArrayList<>();
-        arrayList.add(new CustomerDto("C001","Sithum","Galle",1000));
-        arrayList.add(new CustomerDto("C002","Sithum","Galle",2000));
-        arrayList.add(new CustomerDto("C003","Sithum","Galle",3000));
-        arrayList.add(new CustomerDto("C004","Sithum","Galle",4000));
+//        ArrayList<CustomerDto>arrayList=new ArrayList<>();
+        List<Customer> all = repo.findAll();
 
 
-        return new ResponseUtill("Ok","Successfully Loaded",arrayList);
+
+        return new ResponseUtill("Ok","Successfully Loaded",all);
     }
 }
